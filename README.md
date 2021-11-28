@@ -3,7 +3,7 @@
 Jest to Rest Api do bardzo uproszczonego systemu rezerwacji miejsc parkingowych w budynku.
 
 ## Funkcjonalności
-W ramach tego programu jest dostępne 4 główne Endpoint'y oraz 1 dodatkowy:
+W ramach tego programu jest dostępne 4 główne Endpoint'y:
 * POST - dodanie rezerwacji
 * DELETE - usunięcie rezerwacji
 * GET - otrzymanie wszystkich rezerwacji dla podmiotu
