@@ -15,6 +15,32 @@ W ramach tego programu jest dostępne 4 główne Endpoint'y oraz 1 dodatkowy:
 * Framework: Spring Boot 2.6.0
 * Narzędzie do budowy: Maven
 
+## Endpoint
+### GET - tutaj otrzymujemy wszystkie wolne miejsca
+```
+http://localhost:8080/api/booking/all/parking/free/space
+```
+### GET - tutaj otrzymujemy wszystkie rezerwacje dla podmiotu (np. dla podmiotu 'Krzysiek')
+```
+http://localhost:8080/api/booking/all/reservation/for/person?name=Krzysiek
+```
+### POST - tutaj dodajemy rezerwację wysyłamy dane w postacji JSON
+```
+http://localhost:8080/api/booking/add/reservation
+```
+#### Body w wersji JSON:
+```
+{
+        "id": 2,
+        "name": "Jan",
+        "parkingSpaceId": 3
+}
+```
+### DELETE - usuwamy daną rezerwację za pomocą odpowiedniego indeksu 
+```
+http://localhost:8080/api/booking/deleTe/reservation?index=1
+```
+
 ## Jak zbudować aplikację?
 1. Należy wykonać klon repozytorium swój komputer gh repo clone Nataniel-Antosik/Patronage-2022-Szczecin-Java-Nataniel-Antosik
 2. Odpalić projekt w IntelliJ
@@ -27,8 +53,9 @@ W ramach tego programu jest dostępne 4 główne Endpoint'y oraz 1 dodatkowy:
 ![image](https://user-images.githubusercontent.com/57491794/143784816-825dd27f-55c6-406a-8b9f-bf0688a67528.png)
 ###
 W tym przypadku tylko uruchamiamy aplikację, możemy ją zbudować za pomocą Maven:
-1. W linii poleceń wchodzimy do głównego katalogu
-2. Wpisujemy
+1. Należy wykonać klon repozytorium swój komputer gh repo clone Nataniel-Antosik/Patronage-2022-Szczecin-Java-Nataniel-Antosik
+2. W linii poleceń wchodzimy do głównego katalogu
+3. Wpisujemy
 
 ```
 mvn compile
