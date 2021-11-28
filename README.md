@@ -51,7 +51,7 @@ http://localhost:8080/api/booking/deleTe/reservation?index=1
 
 ![image](https://user-images.githubusercontent.com/57491794/143784839-8321fe06-ea7a-4fd6-85fe-864336417349.png)
 
-4.Wybrać opcję run application(1) 
+4. Wybrać opcję run application(1) 
 
 ![image](https://user-images.githubusercontent.com/57491794/143784816-825dd27f-55c6-406a-8b9f-bf0688a67528.png)
 ###
@@ -99,13 +99,13 @@ curl -X DELETE http://localhost:8080/api/booking/deleTe/reservation?index=1
 	-H "Content-Type: application/json" 
 ```
 ### 
-Wypisać wszystkie rezerwacje dla podmiotu
+Wypisanie wszystkich rezerwacji dla podmiotu
 ```
 curl -X GET http://localhost:8080/api/booking/all/reservation/for/person?name=Jan
 	-H "Content-Type: application/json" 
 ```
 ### 
-Wypisać listę wolnych miejsc
+Wypisanie listy wolnych miejsc
 ```
 curl -X GET http://localhost:8080/api/booking/all/parking/free/space
 	-H "Content-Type: application/json" 
