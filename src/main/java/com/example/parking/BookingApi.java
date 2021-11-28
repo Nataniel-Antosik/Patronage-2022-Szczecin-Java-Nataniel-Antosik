@@ -5,7 +5,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/booking")
@@ -34,7 +35,12 @@ public class BookingApi {
 
     @GetMapping("/all/parking/free/space")
     public List<ParkingSpace> getAllFreeParkingSpace() {
-        return parkingSpace;
+    List<ParkingSpace> tmp = new ArrayList<>(parkingSpace);
+        for(int i = 0; i < reservations.size(); i++){
+            long tmpIndex = reservations.get(i).getParkingSpaceId();
+            tmp.removeIf(element -> element.getId() == tmpIndex);
+        }
+        return tmp;
     }
 
     @PostMapping("/add/reservation")
@@ -42,17 +48,22 @@ public class BookingApi {
         return reservations.add(reservation);
     }
 
-    @GetMapping("/all/reservation2")
-    public List<Reservation> getAllReservation2() {
-        return reservations;
+    @DeleteMapping("/deleTe/reservation")
+    public boolean deleteReservation(@RequestParam int index) {
+        return reservations.removeIf(element -> element.getId() == index);
     }
 
     @GetMapping("/all/reservation")
-    public List<Reservation> getAllReservation(@RequestParam String name) {
-        List<Reservation> tmp = new ArrayList<>();
+    public List<ParkingSpace> getAllReservation(@RequestParam String name) {
+        List<ParkingSpace> tmp = new ArrayList<>();
+
         for(int i = 0; i < reservations.size(); i++){
-            if(reservations.get(i).getName().equals(name)){
-                tmp.add(new Reservation(reservations.get(i).getName(), reservations.get(i).getParkingSpaceId()));
+            for(int j = 0; j < parkingSpace.size(); j++){
+                if(reservations.get(i).getName().equals(name)){
+                    if(reservations.get(i).getParkingSpaceId() == parkingSpace.get(j).getId()){
+                        tmp.add(new ParkingSpace(parkingSpace.get(j).getId(), parkingSpace.get(j).getParkingSpace(), parkingSpace.get(j).getStorey(), parkingSpace.get(j).isPlaceFTD()));
+                    }
+                }
             }
         }
         return tmp;

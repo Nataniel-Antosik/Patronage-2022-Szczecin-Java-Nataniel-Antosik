@@ -2,6 +2,8 @@ package com.example.parking;
 
 public class Reservation {
 
+    private long id;
+
     private String name;
 
     private long parkingSpaceId;
@@ -9,9 +11,16 @@ public class Reservation {
     public Reservation() {
     }
 
-    public Reservation(String name, long parkingSpaceId) {
+    public Reservation(long id, String name, long parkingSpaceId) {
+        this.id = id;
         this.name = name;
         this.parkingSpaceId = parkingSpaceId;
+    }
+
+    public long getId() { return id; }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
