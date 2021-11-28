@@ -42,7 +42,10 @@ http://localhost:8080/api/booking/deleTe/reservation?index=1
 ```
 
 ## Jak zbudować aplikację?
-1. Należy wykonać klon repozytorium do lokalnego urządzenia gh repo clone Nataniel-Antosik/Patronage-2022-Szczecin-Java-Nataniel-Antosik
+1. Należy wykonać klon repozytorium do lokalnego urządzenia
+```
+ gh repo clone Nataniel-Antosik/Patronage-2022-Szczecin-Java-Nataniel-Antosik
+```
 2. Odpalić projekt w IntelliJ
 3. W plikach znaleźć plik Application nacisnąć przycisk Run 
 
@@ -53,7 +56,10 @@ http://localhost:8080/api/booking/deleTe/reservation?index=1
 ![image](https://user-images.githubusercontent.com/57491794/143784816-825dd27f-55c6-406a-8b9f-bf0688a67528.png)
 ###
 W tym przypadku tylko uruchamiamy aplikację, możemy ją zbudować za pomocą Maven:
-1. Należy wykonać klon repozytorium do lokalnego urządzenia gh repo clone Nataniel-Antosik/Patronage-2022-Szczecin-Java-Nataniel-Antosik
+1. Należy wykonać klon repozytorium do lokalnego urządzenia
+```
+ gh repo clone Nataniel-Antosik/Patronage-2022-Szczecin-Java-Nataniel-Antosik
+```
 2. W linii poleceń wchodzimy do głównego katalogu
 3. Wpisujemy
 
@@ -67,7 +73,7 @@ mvn package
 ```
 java -jar "Ścieżka do pliku z rozszerzeniem .jar"
 ```
-Mój przykład:
+Przykład:
 ```
 java -jar "C:\Users\Nataniel Antosik\IdeaProjects\Patronage-2022-Szczecin-Java-Nataniel-Antosik\target\parking-0.0.1-SNAPSHOT.jar"
 ```
