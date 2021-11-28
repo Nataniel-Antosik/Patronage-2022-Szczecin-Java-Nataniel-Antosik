@@ -24,7 +24,7 @@ http://localhost:8080/api/booking/all/parking/free/space
 ```
 http://localhost:8080/api/booking/all/reservation/for/person?name=Krzysiek
 ```
-### POST - tutaj dodajemy rezerwację wysyłamy dane w postaci JSON
+### POST - tutaj dodajemy rezerwację, dane są wysyłane w postaci JSON
 ```
 http://localhost:8080/api/booking/add/reservation
 ```
@@ -67,7 +67,7 @@ W tym przypadku tylko uruchamiamy aplikację, możemy ją zbudować za pomocą M
 mvn compile
 mvn package
 ```
-3. Jak skończą się już wykonywać powyższe polecenia zostanie utworzony folder "Target" w nim znajdują się nowo utworzone pliki po budowaniu aplikacji.
+3. Jak skończą się już wykonywać powyższe polecenia zostanie utworzony folder "Target"- w nim znajdują się nowo utworzone pliki po budowaniu aplikacji.
 4. Aby uruchomić program należy wpisać
 
 ```
