@@ -26,8 +26,29 @@ W ramach tego programu jest dostępne 4 główne Endpoint'y oraz 1 dodatkowy:
 
 ![image](https://user-images.githubusercontent.com/57491794/143784816-825dd27f-55c6-406a-8b9f-bf0688a67528.png)
 
-Potem już można korzystać z Api testować w aplikacji Postman lub z narzędzia Curl
+W tym przypadku tylko uruchamiamy aplikację, możemy ją zbudować za pomocą Maven:
+1. W linii poleceń wchodzimy do głównego katalogu
+2. Wpisujemy
 
+```
+mvn compile
+mvn package
+```
+3. Jak skończą się już wykonywać powyższe polecenia utworzy nam się folder "Target" tam są wszystkie nowo utworzone pliki po budowaniu aplikacji.
+4. Aby uruchomić program należy wpisać
+
+```
+java -jar "Ścieżka do pliku z rozszerzeniem .jar"
+```
+Mój przykład:
+```
+java -jar "C:\Users\Nataniel Antosik\IdeaProjects\Patronage-2022-Szczecin-Java-Nataniel-Antosik\target\parking-0.0.1-SNAPSHOT.jar"
+```
+Kiedy uruchomi się już nasz program wszystkie dane będą wypisywane w konsoli
+![image](https://user-images.githubusercontent.com/57491794/143786276-91acf542-4b8b-4ac7-b6ca-55ece377a194.png)
+
+
+Potem już można korzystać z Api, testować w aplikacji Postman lub z narzędzia Curl
 
 ## Korzystanie z narzędzia Curl 
 
