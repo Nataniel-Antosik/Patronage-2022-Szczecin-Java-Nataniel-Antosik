@@ -47,7 +47,7 @@ http://localhost:8080/api/booking/deleTe/reservation?index=1
  gh repo clone Nataniel-Antosik/Patronage-2022-Szczecin-Java-Nataniel-Antosik
 ```
 2. Odpalić projekt w IntelliJ
-3. W plikach znaleźć plik Application nacisnąć przycisk Run 
+3. W plikach znaleźć Application i nacisnąć przycisk Run 
 
 ![image](https://user-images.githubusercontent.com/57491794/143784839-8321fe06-ea7a-4fd6-85fe-864336417349.png)
 
