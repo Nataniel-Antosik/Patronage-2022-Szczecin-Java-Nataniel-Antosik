@@ -25,7 +25,7 @@ W ramach tego programu jest dostępne 4 główne Endpoint'y oraz 1 dodatkowy:
 4.Wybrać opcję run application(1) 
 
 ![image](https://user-images.githubusercontent.com/57491794/143784816-825dd27f-55c6-406a-8b9f-bf0688a67528.png)
-
+###
 W tym przypadku tylko uruchamiamy aplikację, możemy ją zbudować za pomocą Maven:
 1. W linii poleceń wchodzimy do głównego katalogu
 2. Wpisujemy
