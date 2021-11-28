@@ -24,18 +24,7 @@ public class BookingApi {
         parkingSpace = new ArrayList<>();
         reservations = new ArrayList<>();
         persons = new ArrayList<>();
-        parkingSpace.add(new ParkingSpace(1L, 1, 1, false));
-        parkingSpace.add(new ParkingSpace(2L, 2, 1, true));
-        parkingSpace.add(new ParkingSpace(3L, 3, 1, true));
-        parkingSpace.add(new ParkingSpace(4L, 4, 1, false));
-        parkingSpace.add(new ParkingSpace(5L, 1, 2, false));
-        parkingSpace.add(new ParkingSpace(6L, 2, 2, true));
-        parkingSpace.add(new ParkingSpace(7L, 3, 2, true));
-        parkingSpace.add(new ParkingSpace(8L, 4, 2, false));
-        parkingSpace.add(new ParkingSpace(9L, 1, 3, false));
-        parkingSpace.add(new ParkingSpace(10L, 2, 3, true));
-        parkingSpace.add(new ParkingSpace(11L, 3, 3, true));
-        parkingSpace.add(new ParkingSpace(12L, 4, 3, false));
+        initialize();
     }
 
     @GetMapping("/all/parking/free/space")
@@ -78,8 +67,12 @@ public class BookingApi {
     public ResponseEntity addReservation(@RequestBody Reservation reservation) {
         boolean duplicate;
         boolean duplicateReservation = false;
-        if(reservation.getName().isBlank() || reservation.getName().length() <= 2 || reservation.getName().length() > 20){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        if(reservation.getName().isBlank()){
+            return new ResponseEntity<>("The name contains only white characters", HttpStatus.BAD_REQUEST);
+        } else if (reservation.getName().length() <= 2){
+            return new ResponseEntity<>("The name should be more than 2 characters long", HttpStatus.BAD_REQUEST);
+        } else if (reservation.getName().length() > 20) {
+            return new ResponseEntity<>("The name should be less than 20 characters", HttpStatus.BAD_REQUEST);
         } else {
             if(persons.size() != 0){
                 duplicate = false;
@@ -97,9 +90,11 @@ public class BookingApi {
             if(reservations.size() != 0){
                 duplicateReservation = false;
                 for(int i = 0; i < reservations.size(); i++){
-                    if(reservations.get(i).getParkingSpaceId() == reservation.getParkingSpaceId() || reservations.get(i).getId() == reservation.getId()){
+                    if(reservations.get(i).getParkingSpaceId() == reservation.getParkingSpaceId()){
                         duplicateReservation = true;
-                        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+                        return new ResponseEntity<>("This parking space is taken",HttpStatus.BAD_REQUEST);
+                    } else if (reservations.get(i).getId() == reservation.getId()) {
+                        return new ResponseEntity<>("Booking id is already taken",HttpStatus.BAD_REQUEST);
                     }
                 }
             }
@@ -107,12 +102,31 @@ public class BookingApi {
                 reservations.add(reservation);
             }
         }
-        return new ResponseEntity<>(reservation,HttpStatus.OK);
+        return new ResponseEntity<>("Reservation correctly added",HttpStatus.OK);
     }
 
     @DeleteMapping("/deleTe/reservation")
-    public boolean deleteReservation(@RequestParam int index) {
-        return reservations.removeIf(element -> element.getId() == index);
+    public ResponseEntity deleteReservation(@RequestParam int index) {
+        boolean delete = reservations.removeIf(element -> element.getId() == index);
+        if (delete == false)
+            return new ResponseEntity<>("Reservation not found for deletion", HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>("Reservation correctly deleted",HttpStatus.OK);
     }
 
+    public void initialize() {
+        int tmp = 1;
+        int tmp2 = 1;
+        for(int i = 0; i < 12; i++){
+            if( (i+1) % 2 == 0){
+                parkingSpace.add(new ParkingSpace((long) i + 1, tmp, tmp2, true));
+            } else {
+                parkingSpace.add(new ParkingSpace((long) i + 1, tmp, tmp2, false));
+            }
+            tmp += 1;
+            if(tmp == 5){
+                tmp = 1;
+                tmp2 += 1;
+            }
+        }
+    }
 }
